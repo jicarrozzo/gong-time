@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
-import { QuoteServiceProvider } from '../../providers/quote-service/quote-service';
-import { Quote } from '../../models/quote';
+// import { QuoteServiceProvider } from '../../providers/quote-service/quote-service';
+import { RandomServiceProvider } from '../../providers/random-service/random-service';
+import { Quote, APIQuote } from '../../models/quote';
+import { SmartAudioProvider } from '../../providers/smart-audio/smart-audio';
+
 @IonicPage()
 @Component({
 	selector: 'page-home',
@@ -9,28 +12,38 @@ import { Quote } from '../../models/quote';
 })
 export class HomePage {
 	search: string = 'words';
-	theQuote: string = '';
-	quoteObject: Quote = new Quote();
+	theQuote: Quote;
+
+	tmpQuote: Quote;
+	word1: string;
+	word2: string;
 
 	constructor(
 		public navCtrl: NavController,
-		private quoteService: QuoteServiceProvider,
-		private loadingCtrl: LoadingController
+		// private quoteService: QuoteServiceProvider,
+		private randomService: RandomServiceProvider,
+		private loadingCtrl: LoadingController,
+		private audio: SmartAudioProvider
 	) {}
 
 	getmyword() {
+		this.audio.play('gong');
+
+		this.theQuote = null;
+		this.tmpQuote = null;
+		this.word1 = '';
+		this.word2 = '';
+
 		let loader = this.loadingCtrl.create({
 			content: 'Let me think...'
 		});
 		loader.present();
+		this.randomService.getWord().subscribe(
+			(data: APIQuote[]) => {
+				console.log(data);
+				this.tmpQuote = new Quote(data[0]);
 
-		this.quoteService.getQuote('').subscribe(
-			(data: Quote) => {
-				this.quoteObject = data;
-				this.theQuote = this.quoteObject.contents.quotes[0].quote;
-
-				// this.process();
-				// loader.dismiss();
+				this.process();
 			},
 			(err) => {
 				loader.dismiss();
@@ -41,5 +54,13 @@ export class HomePage {
 		);
 	}
 
-	process() {}
+	process() {
+		if (this.search === 'words') {
+			let arPalabras = this.tmpQuote.splitWords.filter((word: string) => {
+				return word.indexOf('&#') < 0 && word.length > 4;
+			});
+			this.word1 = arPalabras[Math.floor(Math.random() * arPalabras.length)];
+			this.word2 = arPalabras[Math.floor(Math.random() * arPalabras.length)];
+		} else this.theQuote = this.tmpQuote;
+	}
 }

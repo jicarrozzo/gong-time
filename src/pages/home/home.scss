@@ -1,8 +1,16 @@
 page-home {
 	img {
-		height: 50vh;
+		height: 30vh;
 		width: auto;
 		margin: auto;
 		display: block;
+	}
+	ion-label {
+		white-space: normal !important;
+	}
+	.words ion-label {
+		text-transform: uppercase;
+		text-align: center;
+		font-style: italic;
 	}
 }

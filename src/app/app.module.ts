@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
-import { QuoteServiceProvider } from '../providers/quote-service/quote-service';
+import { RandomServiceProvider } from '../providers/random-service/random-service';
+import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
 
 @NgModule({
 	declarations: [ MyApp ],
@@ -24,6 +25,7 @@ import { QuoteServiceProvider } from '../providers/quote-service/quote-service';
 	],
 	bootstrap: [ IonicApp ],
 	entryComponents: [ MyApp ],
-	providers: [ { provide: ErrorHandler, useClass: IonicErrorHandler }, QuoteServiceProvider ]
+	providers: [ { provide: ErrorHandler, useClass: IonicErrorHandler }, RandomServiceProvider,
+    SmartAudioProvider ]
 })
 export class AppModule {}
