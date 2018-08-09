@@ -7,10 +7,14 @@ page-home {
 	}
 	ion-label {
 		white-space: normal !important;
+		color: #fafafa;
 	}
 	.words ion-label {
 		text-transform: uppercase;
 		text-align: center;
 		font-style: italic;
+	}
+	ion-item {
+		background-color: transparent !important;
 	}
 }

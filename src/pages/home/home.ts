@@ -35,6 +35,7 @@ export class HomePage {
 		this.word2 = '';
 
 		let loader = this.loadingCtrl.create({
+			spinner: 'bubbles',
 			content: 'Let me think...'
 		});
 		loader.present();

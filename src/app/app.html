@@ -1,1 +1,17 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu type="overlay" [content]="mycontent" color="secondary">
+  
+  <ion-content>
+    <ion-item>
+      <div class="isoLogo"></div>
+    </ion-item>
+    <ion-card color="secondary">
+      <ion-card-content>
+      <p>Geting bored with the conversation??</p>
+      <p>Its GongTime!</p>
+      <p>New subjects to talk about</p>
+    </ion-card-content>
+   </ion-card>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

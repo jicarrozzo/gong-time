@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Its Gong Time!</ion-title>
   </ion-navbar>
 
@@ -22,22 +25,23 @@
     <img (click)="getmyword()" src="assets/imgs/gong.png"/> 
   <!-- </ion-card> -->
 
-  <div *ngIf="search=='quotes'">
-    <ion-card padding>
+  <ion-card padding color="light">
+    <div *ngIf="!loading" text-center>
+        <ion-spinner name="ios"></ion-spinner>Let me think...
+    </div>
+    <div *ngIf="search=='quotes'">
       <ion-item [innerHTML]="theQuote?.quote"></ion-item>
       <ion-item>
         <ion-avatar item-end>
           {{ theQuote?.author }}
         </ion-avatar>
-      </ion-item> 
-    </ion-card>
-  </div>
-  <div *ngIf="search=='words'">
-    <ion-card padding class="words">
-      <ion-item>{{ word1 }}</ion-item>
-      <ion-item>{{ word2 }}</ion-item>
-    </ion-card>
-  </div>
+      </ion-item>
+    </div> 
+    <div *ngIf="search=='words'" class="words">
+        <ion-item>{{ word1 }}</ion-item>
+        <ion-item>{{ word2 }}</ion-item>
+    </div>
+  </ion-card>
 
 </ion-content>
  
