@@ -26,9 +26,9 @@
   <!-- </ion-card> -->
 
   <ion-card padding color="light">
-    <div *ngIf="!loading" text-center>
+    <!-- <div *ngIf="!loading" text-center>
         <ion-spinner name="ios"></ion-spinner>Let me think...
-    </div>
+    </div> -->
     <div *ngIf="search=='quotes'">
       <ion-item [innerHTML]="theQuote?.quote"></ion-item>
       <ion-item>
