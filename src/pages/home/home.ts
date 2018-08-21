@@ -61,7 +61,9 @@ export class HomePage {
 				return word.indexOf('&#') < 0 && word.length > 4;
 			});
 			this.word1 = arPalabras[Math.floor(Math.random() * arPalabras.length)];
-			this.word2 = arPalabras[Math.floor(Math.random() * arPalabras.length)];
+			do {
+				this.word2 = arPalabras[Math.floor(Math.random() * arPalabras.length)];
+			} while (this.word1 === this.word2);
 		} else this.theQuote = this.tmpQuote;
 	}
 }
