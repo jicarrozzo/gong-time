@@ -1,39 +1,40 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle icon-only>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Its Gong Time!</ion-title>
+    <ion-grid>
+      <ion-row >
+        <ion-col col-4 >
+          <h3>Its Gong Time!</h3>
+        </ion-col>
+        <ion-col>
+          <ion-segment [(ngModel)]="search" color="secondary">
+            <ion-segment-button value="words">
+              Words
+            </ion-segment-button>
+            <ion-segment-button value="quotes">
+              Quotes
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content >
-  <div padding>
-    <ion-segment [(ngModel)]="search">
-      <ion-segment-button value="words">
-        Words
-      </ion-segment-button>
-      <ion-segment-button value="quotes">
-        Quotes
-      </ion-segment-button>
-    </ion-segment>
+
+  <div class="gong">
+    <img (click)="getmyword()" src="assets/imgs/gong.png"/> 
   </div>
 
-  <!-- <ion-card (click)="getmyword()" class="gong-card"> -->
-    <img (click)="getmyword()" src="assets/imgs/gong.png"/> 
-  <!-- </ion-card> -->
-
   <ion-card padding color="light">
-    <!-- <div *ngIf="!loading" text-center>
-        <ion-spinner name="ios"></ion-spinner>Let me think...
-    </div> -->
     <div *ngIf="search=='quotes'">
       <ion-item [innerHTML]="theQuote?.quote"></ion-item>
       <ion-item>
-        <ion-avatar item-end>
-          {{ theQuote?.author }}
+        <ion-avatar item-end [innerHTML]="theQuote?.author">
+          <!-- {{ theQuote?.author }} -->
         </ion-avatar>
       </ion-item>
     </div> 

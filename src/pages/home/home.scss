@@ -1,20 +1,32 @@
 page-home {
+	.gong {
+		padding-top: 30px;
+	}
 	img {
+		margin-top: 30px;
 		height: 30vh;
 		width: auto;
 		margin: auto;
 		display: block;
 	}
+
 	ion-label {
 		white-space: normal !important;
 		color: #fafafa;
 	}
 	.words ion-label {
-		text-transform: uppercase;
+		text-transform: capitalize;
 		text-align: center;
 		font-style: italic;
+		font-size: 1.4em;
 	}
 	ion-item {
 		background-color: transparent !important;
+		p {
+			color: #fafafa !important;
+		}
+		ion-avatar {
+			color: #fafafa !important;
+		}
 	}
 }

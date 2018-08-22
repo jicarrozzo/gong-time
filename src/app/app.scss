@@ -32,4 +32,21 @@ ion-content {
 
 ion-card {
 	border-radius: 10px !important;
+	min-height: 200px !important;
+}
+
+ion-segment {
+	margin-top: 5px !important;
+	//	width: 70% !important;
+	max-width: 60% !important;
+	border: 2px solid #fff !important;
+	border-radius: 10px;
+	.segment-button {
+		color: #ddd !important;
+	}
+	.segment-activated {
+		background-color: #fff !important;
+		color: color($colors, primary) !important;
+		border-color: transparent !important;
+	}
 }
